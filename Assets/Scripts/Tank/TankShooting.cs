@@ -8,6 +8,7 @@ public class TankShooting : MonoBehaviour
     public Transform m_FireTransform;
     public Slider m_AimSlider;
     public AudioSource m_ShootingAudio;
+    public AudioClip m_chasingAudio;
     public AudioClip m_ChargingClip;
     public AudioClip m_FireClip;
     public float m_MinLaunchForce = 15f;
@@ -37,6 +38,7 @@ public class TankShooting : MonoBehaviour
     private void Update()
     {
         m_AimSlider.value = m_MinLaunchForce;
+
 
         if (m_CurrentLaunchForce >= m_MaxLaunchForce && !m_Fired)
         {

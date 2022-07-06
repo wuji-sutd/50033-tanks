@@ -6,10 +6,14 @@ public class TankMovement : MonoBehaviour
     public int m_PlayerNumber = 1;         
     public float m_Speed = 12f;            
     public float m_TurnSpeed = 180f;       
-    public AudioSource m_MovementAudio;    
+    public AudioSource m_MovementAudio;  
+
+    //public AudioSource m_inSand;  
     public AudioClip m_EngineIdling;       
     public AudioClip m_EngineDriving;      
     public float m_PitchRange = 0.2f;
+
+   
 
 
     private string m_MovementAxisName;     
@@ -17,7 +21,12 @@ public class TankMovement : MonoBehaviour
     private Rigidbody m_Rigidbody;         
     private float m_MovementInputValue;    
     private float m_TurnInputValue;        
-    private float m_OriginalPitch;         
+    private float m_OriginalPitch;     
+
+    
+    
+    //trying to do float trapping
+    public bool m_trappedinFlood; 
 
 
     private void Awake()
@@ -31,6 +40,8 @@ public class TankMovement : MonoBehaviour
         m_Rigidbody.isKinematic = false;
         m_MovementInputValue = 0f;
         m_TurnInputValue = 0f;
+        m_trappedinFlood = false;
+
     }
 
 
@@ -55,6 +66,19 @@ public class TankMovement : MonoBehaviour
         m_TurnInputValue = Input.GetAxis(m_TurnAxisName);
 
         EngineAudio ();
+
+    }
+
+    //trying to do fload trapping
+    private void OnCollisionEnter(Collision col) {
+        if (col.gameObject.tag == "quicksand"){
+            m_trappedinFlood = true;
+        }
+    }
+    private void OnCollisionExit(Collision col) {
+        if (col.gameObject.tag == "quicksand"){
+            m_trappedinFlood = false;
+        }
     }
 
 
@@ -82,10 +106,20 @@ public class TankMovement : MonoBehaviour
 
 
     private void Move()
-    {
+    {   
         // Adjust the position of the tank based on the player's input.
-        Vector3 movement = transform.forward * m_MovementInputValue * m_Speed * Time.deltaTime;
-        m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
+        if(m_trappedinFlood==false){
+            m_Speed = 12f;
+            Vector3 movement = transform.forward * m_MovementInputValue * m_Speed * Time.deltaTime;
+            m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
+        }
+        else{
+            //trying to do fload trapping
+            m_Speed = 3f;
+            Vector3 movement = transform.forward * m_MovementInputValue * m_Speed * Time.deltaTime;
+            m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
+        }
+        
     }
 
 
