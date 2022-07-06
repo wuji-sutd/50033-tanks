@@ -11,8 +11,10 @@ Simply fork this repository and work on it. You are required to complete several
 # Using git-lfs
 Some of the files in this repo is very large. Therefore we used git Large File Storage instead. When you `clone` the repository, it will download only references to the file. 
 
-You need to run the following in a freshly cloned repo:
+Install `git-lfs` (click [here](https://git-lfs.github.com) for info or search online). Then, you need to run the following in a freshly cloned repo:
 ```
 git lfs install
 git lfs fetch -all
 ```
+
+The above will download ALL required files to your computer as local copy. 
