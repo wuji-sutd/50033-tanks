@@ -21,7 +21,7 @@ git lfs install
 
 After you run the above command, you can then **clone** this repo accordingly with all the assets downloaded. If not, you can `cd` to the repo directory and run:
 ```
-git lfs fetch -all
+git lfs fetch --all
 ```
 
 The above should download ALL required files to your computer as local copy. You can test by opening `50033-tanks/Assets/Sprites/Aim Arrow.png` file and check that you can indeed open an arrow png file.
