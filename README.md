@@ -12,9 +12,9 @@ Scripting Runtime Version: .NET 5.0
 Simply fork this repository and work on it. You are required to complete several tasks as stated in this [handout](https://docs.google.com/document/d/1xu4x60q5HXakWQ7pQ3ntJRZxRMAFq8s9g2o2I3E7s64/edit?usp=sharing). Copy it and fill it up, then export in `.pdf` format to submit in eDimension. Due date can be found in eDimension. 
 
 # Using git-lfs
-Some of the files in this repo is very large. Github blocks pushes that are larger than 100MB. Therefore we used git Large File Storage instead. When you `clone` the repository, it will download only references to the file. 
+Some of the files in this repo is very large. Github blocks pushes that are larger than 100MB. Therefore we used git Large File Storage instead. If you try to `clone` this repository without `git-lfs` installed, it will download only references to the file and **not the actual file**.
 
-Install `git-lfs` (click [here](https://git-lfs.github.com) for info or search online). Then, you need to run the following command:
+As such _before cloning_, you need to **install** `git-lfs` command line extension (click [here](https://git-lfs.github.com) for info or search online). Then, you need to run the following command to setup Git LFS for your user account:
 ```
 git lfs install
 ```
